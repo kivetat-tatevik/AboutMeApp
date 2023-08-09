@@ -14,10 +14,16 @@ final class LoginViewController: UIViewController {
     @IBOutlet var passwordTextField: UITextField!
     
     // MARK: - UserName & Password
-    private var userName = "User"
-    private var password = "11"
+    private let userName = User.getUsers().userName
+    private let password = User.getUsers().password
     
     // MARK: - Override Functions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userNameTextField.text = userName
+        passwordTextField.text = password
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
         welcomeVC.user = userName

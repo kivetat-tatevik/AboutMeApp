@@ -9,12 +9,14 @@ import UIKit
 
 final class WelcomeViewController: UIViewController {
     // MARK: - IB Outlet
+    @IBOutlet var personLabel: UILabel!
     @IBOutlet var welcomeLabel: UILabel!
     
-    var user = ""
+    var user = User.getUsers().userName
+    var personName  = Person.getPerson().firstName.1
     
     private let primaryColor = UIColor(
-        red: 210/255,
+        red: 255/255,
         green: 109/255,
         blue: 128/255,
         alpha: 1
@@ -31,6 +33,7 @@ final class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         view.addVerticalGradientLayer(topColor: primaryColor, bottomColor: secondaryColor)
         welcomeLabel.text = "Welcome, \(user)!"
+        personLabel.text = "My name is \(personName)!"
     }
 }
 extension UIView {
